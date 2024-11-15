@@ -1,59 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Майнинг токенов</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        #startMining {
-            padding: 10px 20px;
-            background-color: #0088cc;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        #status {
-            margin-top: 20px;
-        }
-    </style>
+    <title>QuBitcoin Майнинг</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Майнинг токенов</h1>
-    <button id="startMining">Начать майнинг</button>
-    <div id="status"></div>
+    <div class="container">
+        <header>
+            <h1>Добро пожаловать в QuBitcoin Майнинг!</h1>
+            <p>Начни майнинг и получай токены qubitcoin</p>
+        </header>
+        <div id="mining-section">
+            <button id="start-mining">Начать майнинг</button>
+            <p id="hash-result">Ваш хэш: <span id="hash">Не найден</span></p>
+            <p id="reward-result">Награда: <span id="reward">0 QBT</span></p>
+        </div>
+        <footer>
+            <p>Пригласите друзей, чтобы ускорить майнинг!</p>
+            <button id="invite-friends">Пригласить друзей</button>
+            <p>Создано для Telegram бота.</p>
+        </footer>
+    </div>
 
-    <script>
-        document.getElementById("startMining").onclick = function() {
-            document.getElementById("status").innerText = "Майнинг в процессе...";
-            mineToken();
-        };
-
-        function mineToken() {
-            let target = '0000'; // Пример сложности хэша
-            let nonce = 0;
-            let hash = '';
-
-            // Простой алгоритм для "майнинга" хэша
-            while (true) {
-                hash = sha256('block' + nonce); // Пример использования sha256
-                if (hash.startsWith(target)) {
-                    document.getElementById("status").innerText = `Найден хэш: ${hash}`;
-                    break;
-                }
-                nonce++;
-            }
-        }
-
-        // Пример функции SHA-256
-        function sha256(str) {
-            return CryptoJS.SHA256(str).toString(CryptoJS.enc.Hex);
-        }
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1-crypto-js.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
